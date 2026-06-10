@@ -20,6 +20,9 @@ bug_to_user_story_v2:
     - Se o relato trouxer múltiplos problemas independentes ou severidade alta/crítica, use a estrutura expandida para cobrir todos os sinais.
     - Se um detalhe aparecer no relato, mantenha-o na resposta quando ele for relevante para a story.
     - Se algo não estiver no relato, omita.
+    - Cada frase, bullet e seção da saída deve ser rastreável a um fato explícito do bug report; não use inferência para preencher lacunas.
+    - Se o relato não trouxer uma solução, não invente uma solução; limite-se a descrever o comportamento esperado com base no que o bug report já mostra.
+    - Sempre que possível, reutilize o vocabulário exato do relato em vez de trocar por sinônimos mais abstratos.
 
     DECISÃO DE ESTRUTURA
 
@@ -28,6 +31,9 @@ bug_to_user_story_v2:
     - Caso o relato cite um elemento de interface específico (botão, modal, lista, imagem, carrinho, dashboard, gráfico): preserve o elemento e o efeito esperado.
     - Use a estrutura expandida com seções A/B/C/D, contexto e tarefas técnicas somente quando houver múltiplos problemas independentes ou severidade crítica explícita.
     - Nunca adicione seção técnica, tarefa, métrica, tecnologia ou regra de negócio sem evidência no relato.
+    - Para validação, UI/UX e mobile, prefira 3 a 5 critérios curtos; não invente critérios extras de acessibilidade, performance ou backend se eles não estiverem sustentados no relato.
+    - Para casos com comparação explícita entre plataformas ou browsers, mantenha a comparação na story e nos critérios (por exemplo, funciona em um navegador e falha em outro).
+    - Para business logic, reproduza todos os números do cenário e mostre o cálculo linha a linha sem trocar valores por aproximação.
 
     FLUXO INTERNO
 
@@ -55,6 +61,7 @@ bug_to_user_story_v2:
     - Use a estrutura básica.
     - Inclua Exemplo de Cálculo reproduzindo todos os valores do relato.
     - Se houver subtotal, desconto, totais, percentuais ou limites, escreva-os literalmente.
+    - Se o relato for apenas uma inconsistência de contagem, total exibido ou métrica agregada sem fórmula explícita, trate como story simples e não crie Exemplo de Cálculo.
 
     Security
 
@@ -66,12 +73,16 @@ bug_to_user_story_v2:
 
     - Preserve o alvo de desempenho, travamento, memória, timeout, fila ou concorrência quando o relato trouxer esses dados.
     - Inclua critérios que tornem a falha testável, como tempo máximo, paginação, background processing, retry, batch size ou reserva temporária quando explicitados.
+    - Não introduza bibliotecas, algoritmos, padrões de arquitetura ou mecanismos de correção que não estejam no relato; use apenas o nível de detalhe pedido pelo bug report e pela referência mais próxima.
+    - Quando o relato explicitar uma limitação técnica atual (ex.: sem paginação, carregamento na Thread principal, processamento síncrono, cache inadequado, ausência de retry ou carregamento completo de listas), é permitido transformar essa informação em comportamento esperado nos critérios de aceitação.
+    - Nesses casos, podem ser gerados critérios técnicos diretamente derivados da limitação descrita, sem introduzir tecnologias específicas não mencionadas.
 
     Multiple / Critical
 
     - Quando houver mais de um problema no mesmo relato, combine os tópicos numa única story expandida.
     - Organize por seções, mas não crie tópicos que não estejam sustentados no relato.
     - Mantenha o texto objetivo e direto.
+    - Crie somente uma linha de ação por problema identificado; evite duplicar soluções ou adicionar tarefas secundárias que não estejam ligadas ao bug principal.
 
     EXEMPLO 1
 
