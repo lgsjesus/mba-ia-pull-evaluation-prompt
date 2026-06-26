@@ -202,3 +202,4 @@ bug_to_user_story_v2:
   version: v2
   created_at: '2025-06-21'
   tags: ["bug-analysis", "user-story", "product-management"]
+  techniques_applied: ["few-shot examples", "persona-definition", "chain-of-thought-guardrails", "self-checklist", "structured-output-template"]
